@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OTP Input Field Example</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <style>
+            /* Optional: Styling for demonstration purposes */
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+            #otpForm {
+                display: flex;
+            }
+            .otpInput {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                text-align: center;
+                margin: 0 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="otpForm">
+            <input type="text" class="otpInput" maxlength="1" />
+            <input type="text" class="otpInput" maxlength="1" />
+            <input type="text" class="otpInput" maxlength="1" />
+            <input type="text" class="otpInput" maxlength="1" />
+        </form>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const otpInputs = document.querySelectorAll(".otpInput");
+
+                function focusNext(currentInput) {
+                    const maxLength = parseInt(currentInput.maxLength, 10);
+                    const currentInputIndex =
+                        Array.from(otpInputs).indexOf(currentInput);
+
+                    if (currentInput.value.length === maxLength) {
+                        // Move focus to the next input field
+                        const nextInput = otpInputs[currentInputIndex + 1];
+                        if (nextInput) {
+                            nextInput.focus();
+                        } else {
+                            // Submit the form or trigger another action when all inputs are filled
+                            console.log("OTP Entered:", getOTP());
+                        }
+                    }
+                }
+
+                function focusPrevious(currentInput) {
+                    const currentInputIndex =
+                        Array.from(otpInputs).indexOf(currentInput);
+
+                    if (currentInput.value.length === 0) {
+                        const previousInput = otpInputs[currentInputIndex - 1];
+                        if (previousInput) {
+                            previousInput.focus();
+                        }
+                    }
+                }
+
+                function getOTP() {
+                    // Concatenate values of all input fields to get the complete OTP
+                    return Array.from(otpInputs)
+                        .map((input) => input.value)
+                        .join("");
+                }
+
+                // Add event listeners for input and keydown events
+                otpInputs.forEach((input) => {
+                    input.addEventListener("input", function () {
+                        focusNext(this);
+                    });
+
+                    input.addEventListener("keydown", function (event) {
+                        if (event.key === "Backspace") {
+                            focusPrevious(this);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

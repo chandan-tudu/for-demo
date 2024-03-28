@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page Scroll to Top</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::after,
+            *::before {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                line-height: 1.5;
+                background: #f7f7f7;
+                font-family: "Open Sans", sans-serif;
+                color: #222222;
+                padding-bottom: 50px;
+            }
+
+            h1,
+            h2 {
+                line-height: 1.2;
+            }
+            .logo {
+                display: flex;
+                justify-content: center;
+                padding: 50px;
+            }
+            .logo a {
+                font-family: "Lobster", cursive;
+                color: inherit;
+                font-size: 42px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .container {
+                padding: 30px 40px;
+                max-width: 710px;
+                margin: 0 auto;
+                background-color: white;
+                box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+                    0 8px 10px -6px rgb(0 0 0 / 0.1);
+                border-radius: 5px;
+            }
+
+            h1 {
+                /* text-align: center; */
+                font-size: 32px;
+                border: 1px solid #cccccc;
+                padding: 20px;
+                border-radius: 3px;
+            }
+
+            hr {
+                border-top: 1px solid #cccccc;
+            }
+
+            .scroll-top {
+                display: none;
+                position: fixed;
+                bottom: 50px;
+                right: 30px;
+                z-index: 9999;
+                border: none;
+                outline: none;
+            }
+            .scroll-top span {
+                display: flex;
+                width: 50px;
+                height: 50px;
+                border: 2px solid #222222;
+                border-radius: 5px;
+                justify-content: center;
+                align-items: center;
+                font-size: 32px;
+                cursor: pointer;
+            }
+
+            .scroll-top span:hover {
+                color: white;
+                background-color: rgba(0, 0, 0, 0.9);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="">logo</a>
+            </div>
+        </header>
+        <div class="container">
+            <h1>Page scroll to top (Scroll to see the result)</h1>
+            <section>
+                <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nobis ipsa iste, blanditiis molestias accusamus autem modi
+                    aperiam, architecto amet id error culpa incidunt fugiat
+                    necessitatibus, asperiores accusantium? Quod tempore
+                    quibusdam id quaerat veniam ipsa necessitatibus. Minus
+                    labore nemo ducimus voluptatibus.
+                </p>
+                <hr />
+                <h2>Lorem ipsum, dolor sit amet consectetur adipisicing.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dignissimos in ullam odio necessitatibus, minima earum
+                    aliquid doloremque atque non omnis possimus nisi labore
+                    ipsum quas quod expedita. Animi, incidunt ullam.
+                </p>
+                <hr />
+                <h2>Lorem ipsum dolor sit.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Totam mollitia consequuntur, vel, perferendis vitae
+                    consectetur nulla delectus eaque nostrum neque ipsam debitis
+                    quisquam obcaecati hic placeat incidunt magnam illo et ea
+                    iusto dolorum iure. Eligendi dolorum assumenda porro dolore
+                    labore soluta non!
+                </p>
+                <hr />
+                <h2>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aperiam!
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Animi maiores nulla corporis laboriosam eum dignissimos
+                    distinctio corrupti architecto veniam obcaecati explicabo
+                    cumque in aperiam sit soluta fuga accusantium nihil nobis
+                    recusandae saepe, minus, ratione officia! Asperiores id
+                    suscipit similique magnam. Nobis enim sint dolorum eaque
+                    quisquam expedita suscipit laboriosam repellendus?
+                </p>
+                <hr />
+                <h2>Lorem ipsum dolor sit.</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Earum laboriosam asperiores nulla excepturi nam
+                    necessitatibus!
+                </p>
+                <hr />
+                <h2>Lorem ipsum, dolor sit amet consectetur adipisicing.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dignissimos in ullam odio necessitatibus, minima earum
+                    aliquid doloremque atque non omnis possimus nisi labore
+                    ipsum quas quod expedita. Animi, incidunt ullam.
+                </p>
+                <hr />
+                <h2>Lorem ipsum dolor sit.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Totam mollitia consequuntur, vel, perferendis vitae
+                    consectetur nulla delectus eaque nostrum neque ipsam debitis
+                    quisquam obcaecati hic placeat incidunt magnam illo et ea
+                    iusto dolorum iure. Eligendi dolorum assumenda porro dolore
+                    labore soluta non!
+                </p>
+                <hr />
+                <h2>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aperiam!
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Animi maiores nulla corporis laboriosam eum dignissimos
+                    distinctio corrupti architecto veniam obcaecati explicabo
+                    cumque in aperiam sit soluta fuga accusantium nihil nobis
+                    recusandae saepe, minus, ratione officia! Asperiores id
+                    suscipit similique magnam. Nobis enim sint dolorum eaque
+                    quisquam expedita suscipit laboriosam repellendus?
+                </p>
+                <hr />
+                <h2>Lorem ipsum dolor sit.</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Earum laboriosam asperiores nulla excepturi nam
+                    necessitatibus!
+                </p>
+            </section>
+        </div>
+        <div class="scroll-top" id="scrollTopBtn"><span>🠕</span></div>
+
+        <script>
+            var scrollTopBtn = document.getElementById("scrollTopBtn");
+            function onScroll() {
+                if (document.documentElement.scrollTop > 500) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            }
+
+            window.addEventListener("scroll", onScroll);
+
+            scrollTopBtn.addEventListener("click", function () {
+                document.documentElement.scrollTop = 0;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Custom select menu with search</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                line-height: 1.5em;
+            }
+
+            html {
+                font-size: 16px;
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+                font-family: "Open Sans", sans-serif;
+                background-color: #412846;
+            }
+
+            svg {
+                vertical-align: middle;
+                display: inline-block;
+            }
+
+            h1 {
+                text-align: center;
+                color: white;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 50px;
+                padding-top: 0;
+            }
+
+            .select-menu {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .sl-btn {
+                background-color: white;
+                padding: 20px;
+                border-radius: 3px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                font-size: 18px;
+            }
+            .sl-btn .icon {
+                transition: 0.3s;
+            }
+
+            .sl-content {
+                margin-top: 5px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 3px;
+            }
+
+            .sl-search {
+                display: flex;
+                align-items: baseline;
+            }
+            .sl-search input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                padding-left: 35px;
+                font-size: 16px;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+            }
+            .sl-search input[type="text"]:hover,
+            .sl-search input[type="text"]:focus {
+                border-color: #bf984d;
+            }
+            .sl-search .icon {
+                font-size: 16px;
+                z-index: 1;
+                width: 20px;
+                margin-right: -20px;
+                padding-left: 10px;
+                font-size: 20px;
+                color: #999;
+            }
+
+            .sl-options ul {
+                all: unset;
+                list-style: none;
+                margin-top: 10px;
+                display: block;
+                max-height: 250px;
+                overflow-x: auto;
+            }
+            .sl-options li {
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+            .sl-options li:hover,
+            .sl-options li.selected {
+                background-color: #d7ccbf;
+            }
+
+            .sl-content {
+                display: none;
+            }
+
+            .active .sl-content {
+                display: block;
+            }
+
+            .active .sl-btn .icon {
+                transform: rotate(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Custom select menu with search box</h1>
+        <div class="container">
+            <section class="select-menu" id="selectMenu">
+                <input type="hidden" name="country" id="hiddenInput" />
+                <div class="sl-btn" id="selectBtn">
+                    <span>Select Country</span>
+                    <i class="icon"
+                        ><svg
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="feather feather-chevron-down"
+                        >
+                            <polyline points="6 9 12 15 18 9"></polyline></svg
+                    ></i>
+                </div>
+                <div class="sl-content">
+                    <div class="sl-search">
+                        <i class="icon"
+                            ><svg
+                                width="1em"
+                                height="1em"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="feather feather-search"
+                            >
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line
+                                    x1="21"
+                                    y1="21"
+                                    x2="16.65"
+                                    y2="16.65"
+                                ></line></svg
+                        ></i>
+                        <input
+                            type="text"
+                            name="country"
+                            id="countryInput"
+                            placeholder="Search"
+                            autocomplete="off"
+                            spellcheck="false"
+                        />
+                    </div>
+                    <div class="sl-options">
+                        <ul id="CountryList"></ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+            const COUNTRY_LIST = [
+                "Afghanistan",
+                "Argentina",
+                "Armenia",
+                "Aruba",
+                "Australia",
+                "Austria",
+                "Azerbaijan",
+                "Bahamas",
+                "Bahrain",
+                "Bangladesh",
+                "Barbados",
+                "Belarus",
+                "Belgium",
+                "Belize",
+                "Benin",
+                "Bermuda",
+                "Bhutan",
+                "Bolivia",
+                "Bosnia &amp; Herzegovina",
+                "Botswana",
+                "Brazil",
+                "British Virgin Islands",
+                "Brunei",
+                "Bulgaria",
+                "Burkina Faso",
+                "Burundi",
+                "Cambodia",
+                "Cameroon",
+                "Cape Verde",
+                "Cayman Islands",
+                "Chad",
+                "Chile",
+                "China",
+                "Colombia",
+                "Congo",
+                "Cook Islands",
+                "Costa Rica",
+                "Cote D Ivoire",
+                "Croatia",
+                "Falkland Islands",
+                "Faroe Islands",
+                "Fiji",
+                "Finland",
+                "France",
+                "French Polynesia",
+                "French West Indies",
+                "Gabon",
+                "Gambia",
+                "Georgia",
+                "Germany",
+                "Ghana",
+                "Gibraltar",
+                "Greece",
+                "Greenland",
+                "Grenada",
+                "Guam",
+                "Guatemala",
+                "Guernsey",
+                "Guinea",
+                "India",
+                "Sudan",
+                "Suriname",
+                "Swaziland",
+                "Sweden",
+                "Switzerland",
+                "Syria",
+                "Taiwan",
+                "Tajikistan",
+                "Tanzania",
+                "Thailand",
+                "Timor L'Este",
+                "Togo",
+                "Tonga",
+                "Trinidad &amp; Tobago",
+                "Tunisia",
+                "Turkey",
+                "Turkmenistan",
+                "Turks &amp; Caicos",
+                "Uganda",
+                "Ukraine",
+                "United Arab Emirates",
+                "United Kingdom",
+                "Uruguay",
+                "Uzbekistan",
+                "Venezuela",
+                "Vietnam",
+                "Virgin Islands (US)",
+                "Yemen",
+                "Zambia",
+                "Zimbabwe",
+                "Srilanka",
+                "Pakistan",
+                "Nepal",
+                "United States of America (USA)",
+                "Poland",
+            ];
+            const selectMenu = document.getElementById("selectMenu");
+            const selectBtn = document.getElementById("selectBtn");
+            const selectBtnSpan = document.querySelector("#selectBtn span");
+            const searchInput = document.getElementById("countryInput");
+            const countryList = document.getElementById("CountryList");
+            const hiddenInput = document.getElementById("hiddenInput");
+            let selectedCountry = false;
+
+            function insertCountries(list) {
+                let li = "";
+                list.forEach((name) => {
+                    if (selectedCountry === name) {
+                        li += `<li onclick="countryClick(this)" class="selected">${name}</li>`;
+                    } else {
+                        li += `<li onclick="countryClick(this)">${name}</li>`;
+                    }
+                });
+                countryList.innerHTML = li;
+            }
+            insertCountries(COUNTRY_LIST);
+
+            selectBtn.onclick = function () {
+                selectMenu.classList.toggle("active");
+                if (selectMenu.classList.contains("active"))
+                    searchInput.focus();
+            };
+            // When a user click on an option
+            function countryClick(el) {
+                selectBtnSpan.innerText = el.innerText;
+                selectedCountry = el.innerText;
+                hiddenInput.value = el.innerText;
+                selectMenu.classList.toggle("active");
+                searchInput.value = "";
+                insertCountries(COUNTRY_LIST);
+            }
+            // When a user search an option
+            const filteredCountries = function (e) {
+                let keyword = searchInput.value.toLowerCase();
+                let filteredResult = COUNTRY_LIST.filter((country) => {
+                    country = country.toLowerCase();
+                    return country.indexOf(keyword) > -1;
+                });
+                // console.log(filteredResult);
+                insertCountries(filteredResult);
+            };
+            searchInput.addEventListener("keyup", filteredCountries);
+        </script>
+    </body>
+</html>

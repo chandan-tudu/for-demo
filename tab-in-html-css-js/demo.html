@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tab</title>
+        <!-- CSS Code -->
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                line-height: 1.5em;
+            }
+
+            html {
+                font-size: 16px;
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+                background-color: #f7f7f7;
+                color: #222222;
+                padding: 20px;
+            }
+
+            body,
+            input,
+            button {
+                font-family: "Open Sans", sans-serif;
+                font-size: 1rem;
+            }
+
+            .tab-container {
+                background: #fff;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                border-radius: 3px;
+                padding: 30px;
+            }
+            .tab-container .tab-labels {
+                padding: 0;
+                margin: 0;
+            }
+            .tab-container .tab-labels .tab-label {
+                position: relative;
+                display: inline-block;
+                list-style: none;
+                padding: 1em 2em 0.5em;
+                padding: 15px;
+                border: 1px solid transparent;
+                margin-bottom: -1px;
+                cursor: pointer;
+                outline: none;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            .tab-container .tab-labels .tab-label.active {
+                border-color: #ccc;
+                border-bottom: 1px solid #fff;
+                color: #ff8a00;
+            }
+            .tab-container .tab-labels .tab-label:hover {
+                color: #ff8a00;
+            }
+            .tab-container .tab-panel {
+                display: none;
+            }
+            .tab-container .tab-panel.active {
+                display: block;
+                border-top: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="tab-container">
+            <ul class="tab-labels" role="tablist">
+                <li class="tab-label" role="tab">JavaScript</li>
+                <li class="tab-label" role="tab">PHP</li>
+                <li class="tab-label" role="tab">Python</li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-panel" role="tabpanel">
+                    <h2>What is JavaScript?</h2>
+                    <p>
+                        JavaScript, often abbreviated as JS, is a programming
+                        language that is one of the core technologies of the
+                        World Wide Web, alongside HTML and CSS.
+                    </p>
+                </div>
+                <div class="tab-panel" role="tabpanel">
+                    <h2>What is PHP?</h2>
+                    <p>
+                        PHP (recursive acronym for PHP: Hypertext Preprocessor)
+                        is a widely-used open source general-purpose scripting
+                        language that is especially suited for web development
+                        and can be embedded into HTML.
+                    </p>
+                </div>
+                <div class="tab-panel" role="tabpanel">
+                    <h2>What is Python?</h2>
+                    <p>
+                        Python is an interpreted, object-oriented, high-level
+                        programming language with dynamic semantics. Its
+                        high-level built in data structures, combined with
+                        dynamic typing and dynamic binding, make it very
+                        attractive for Rapid Application Development, as well as
+                        for use as a scripting or glue language to connect
+                        existing components together.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- JavaScript Code -->
+        <script>
+            const tabLabels = document.querySelectorAll(".tab-label");
+            const tabPanels = document.querySelectorAll(".tab-panel");
+
+            function activate_the_tab(target_i) {
+                if (tabLabels.length === tabPanels.length) {
+                    for (let i = 0; i < tabLabels.length; i++) {
+                        if (i === target_i) {
+                            tabLabels[i].classList.add("active");
+                            tabPanels[i].classList.add("active");
+                        } else {
+                            tabLabels[i].classList.remove("active");
+                            tabPanels[i].classList.remove("active");
+                        }
+                    }
+                }
+            }
+            activate_the_tab(0);
+
+            function on_tab_click(e, i) {
+                activate_the_tab(i);
+            }
+
+            tabLabels.forEach((item, i) => {
+                item.addEventListener("click", (e) => on_tab_click(e, i));
+            });
+        </script>
+    </body>
+</html>

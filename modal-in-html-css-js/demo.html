@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Modal</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                line-height: 1.5em;
+            }
+
+            html {
+                font-size: 16px;
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                font-family: "Open Sans", sans-serif;
+                background: #f7f7f7;
+            }
+
+            svg {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .show-modal {
+                cursor: pointer;
+            }
+
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+                height: 100%;
+                width: 100%;
+                opacity: 1;
+                transition: opacity 0.5s;
+            }
+
+            .modal-body {
+                transition: 0.5s;
+                background: white;
+                padding: 20px;
+                border-radius: 3px;
+                box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+                position: absolute;
+                width: 70%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .modal-body .close {
+                float: right;
+                font-size: 28px;
+                color: #999;
+            }
+            .modal-body .close:hover {
+                cursor: pointer;
+                color: #000000;
+            }
+
+            .modal.hide {
+                visibility: hidden;
+            }
+            .modal.hide .modal-body {
+                top: -50%;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="show-modal">Show Modal</button>
+        <div class="modal hide">
+            <div class="modal-body">
+                <span class="close">&times;</span>
+                <h3>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Corrupti, quidem?
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nostrum suscipit consequatur ipsum maxime maiores sequi
+                    consequuntur, cum sit veritatis accusantium ex eum iste,
+                    odit repellendus itaque cumque id fugit fugiat aut
+                    voluptate? Minus, amet? Non distinctio, quam ea eligendi
+                    repellendus repudiandae. Tempora sint autem ex iste, laborum
+                    ea. Libero, provident.
+                </p>
+            </div>
+        </div>
+        <script>
+            const modal = document.querySelector(".modal");
+            const modal_body = document.querySelector(".modal-body");
+            const show_modal = document.querySelector(".show-modal");
+            const modal_close = document.querySelector(".modal-body .close");
+            show_modal.onclick = function () {
+                modal.classList.remove("hide");
+            };
+            modal_close.onclick = function (e) {
+                e.stopPropagation();
+                modal.classList.add("hide");
+            };
+
+            modal_body.onclick = function (e) {
+                e.stopPropagation();
+            };
+            modal.onclick = function () {
+                modal.classList.add("hide");
+            };
+        </script>
+    </body>
+</html>
