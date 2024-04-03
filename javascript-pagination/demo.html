@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pagination In JavaScript</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+        />
+        <style>
+            #data {
+                font-size: 18px;
+            }
+
+            #pagNums,
+            .pagination {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .pagination button {
+                padding: 10px 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Pagination: page - <span id="curPage">1</span></h1>
+            <!-- This is not the correct way to show the fetching message, it is just for testing -->
+            <ul id="data">
+                Fetching Data...
+            </ul>
+
+            <div class="pagination">
+                <div id="pagNums"></div>
+            </div>
+        </div>
+
+        <script>
+            const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+            const itemsPerPage = 15; // Number of items to display per page
+            let currentPage = 1;
+            let totalPages = 0;
+            const curPageEl = document.getElementById('curPage');
+            const dataContainer = document.getElementById('data');
+
+            async function fetchData() {
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+            function displayData(data, page) {
+                currentPage = page;
+                curPageEl.innerText = currentPage;
+                dataContainer.innerHTML = ''; // Clear the container
+
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+
+                const itemsToDisplay = data.slice(start, end);
+
+                itemsToDisplay.forEach((item) => {
+                    // Create and append elements to dataContainer
+                    const itemElement = document.createElement('li');
+                    itemElement.textContent = item.title; // Customize as needed
+                    dataContainer.appendChild(itemElement);
+                });
+            }
+
+            function createPagination(data) {
+                const paginationContainer = document.getElementById('pagNums');
+                paginationContainer.innerHTML = ''; // Clear the container
+
+                // Calculating Total Pages
+                totalPages = Math.ceil(data.length / itemsPerPage);
+
+                // Implementing Next And Prev
+                if (totalPages > 0) {
+                    const nextBtn = document.createElement('button');
+                    const prevBtn = document.createElement('button');
+                    nextBtn.textContent = 'Next';
+                    prevBtn.textContent = 'Prev';
+                    nextBtn.addEventListener('click', () => {
+                        if (totalPages >= currentPage + 1)
+                            displayData(data, currentPage + 1);
+                    });
+                    prevBtn.addEventListener('click', () => {
+                        if (0 < currentPage - 1)
+                            displayData(data, currentPage - 1);
+                    });
+
+                    paginationContainer.insertAdjacentElement(
+                        'beforebegin',
+                        prevBtn
+                    );
+                    paginationContainer.insertAdjacentElement(
+                        'afterend',
+                        nextBtn
+                    );
+                }
+
+                // Inserting Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.addEventListener('click', () =>
+                        displayData(data, i)
+                    );
+                    paginationContainer.appendChild(button);
+                }
+            }
+
+            (async function () {
+                try {
+                    const data = await fetchData();
+                    displayData(data, 1);
+                    createPagination(data);
+                } catch (err) {
+                    dataContainer.innerText =
+                        'See console an error has occurred';
+                    console.log(err);
+                }
+            })();
+        </script>
+    </body>
+</html>
