@@ -1,3 +1,9 @@
 {
-    "/docs/js/axios-send-request-with-headers.html":"https://www.codingyet.com/how-to-make-http-request-with-headers-in-axios/"
+    "/docs/js/checking-element-visibility-in-javascript.html":"https://www.codingyet.com/how-to-check-element-visibility-in-javascript/",
+    "/docs/php/connecting-to-a-remote-mysql-database-via-php-with-ssh-tunneling.html":"https://www.codingyet.com/connect-to-remote-mysql-database-via-php-with-ssh-tunnel/",
+    "/docs/php/extract-numbers-from-a-string-in-php.html":"https://www.codingyet.com/how-to-extract-numbers-from-a-string-in-php/",
+    "/docs/js/executing-javascript-after-page-load.html":"https://www.codingyet.com/how-to-execute-javascript-code-after-page-loads/",
+    "/docs/php/convert-a-string-to-date-and-datetime-in-php.html":"https://www.codingyet.com/how-to-convert-string-to-date-and-datetime-in-php/",
+    "/docs/php/sort-an-array-of-objects-by-object-fields-in-php.html":"https://www.codingyet.com/how-to-sort-array-of-objects-by-object-fields-in-php/",
+    "/docs/php/insert-a-new-item-at-any-position-in-a-php-array.html":"https://www.codingyet.com/how-to-insert-new-item-at-any-position-in-php-array/"
 }
