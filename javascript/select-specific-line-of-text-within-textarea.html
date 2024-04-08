@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Line in TextArea Using JavaScript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h2>Enter Multiline Text and Line Number</h2>
+    <label for="textArea">Enter Multiline Text</label>
+    <textarea id="textArea"></textarea>
+    <label for="lineNum">Enter Line Number:</label>
+    <input type="number" id="lineNum" placeholder="Line number">
+    <button onclick="selectLine()">Select Line</button>
+    <script>function selectLine(){if(0===lineNum)return void alert("Please enter a line number.");const e=document.getElementById("textArea"),n=e.value;let t=0,l=n.length;const i=n.split("\n");if(lineNum>i.length)return void alert("Line number is greater than the lines textarea have.");const u=lineNum;if(u>0&&u<=i.length){for(let e=0;e<u-1;e++)t+=i[e].length+1;l=t+i[u-1].length}e.setSelectionRange(t,l),e.focus()}const lineNumInput=document.getElementById("lineNum");let lineNum=0;lineNumInput.addEventListener("change",e=>{lineNum=parseInt(e.target.value)});</script>
+</body>
+</html>
