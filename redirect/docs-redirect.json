@@ -7,5 +7,11 @@
     "/docs/php/sort-an-array-of-objects-by-object-fields-in-php.html":"https://www.codingyet.com/how-to-sort-array-of-objects-by-object-fields-in-php/",
     "/docs/php/insert-a-new-item-at-any-position-in-a-php-array.html":"https://www.codingyet.com/how-to-insert-new-item-at-any-position-in-php-array/",
     "/docs/php/difference-between-single-and-double-quotes-in-php.html":"https://www.codingyet.com/difference-between-single-and-double-quotes-in-php/",
-    "/docs/js/truncate-a-string-in-javascript.html":"https://www.codingyet.com/how-to-cut-or-truncate-string-in-javascript/"
+    "/docs/js/truncate-a-string-in-javascript.html":"https://www.codingyet.com/how-to-cut-or-truncate-string-in-javascript/",
+    "/docs/php/extract-the-user-name-from-the-email-id-using-php.html":"https://www.codingyet.com/how-to-extract-user-name-from-email-using-php/",
+    "/docs/js/extract-meta-tag-information-using-javascript.html":"https://www.codingyet.com/how-to-extract-html-meta-tag-information-using-javascript/",
+    "/docs/php/sort-a-multidimensional-array-by-date-element-in-php.html":"https://www.codingyet.com/how-to-sort-multidimensional-array-by-date-in-php/",
+    "/docs/react/how-to-cancel-fetch-requests-in-react-js.html":"https://www.codingyet.com/how-to-cancel-fetch-requests-in-react-js/",
+    "/docs/html-dom/selecting-a-specific-line-of-text-within-a-textarea-using-javascript.html":"https://www.codingyet.com/select-specific-line-of-text-within-textarea-in-javascript/",
+    "/docs/php/difference-between-bindparam-and-bindvalue-in-php.html":"https://www.codingyet.com/difference-between-bindparam-and-bindvalue-in-php/"
 }
