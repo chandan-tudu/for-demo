@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking a Radio Button in JavaScript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <h2>Radio Buttons</h2>
+    <input type="radio" id="radioButton1" name="radioGroup" value="option1"> <label for="radioButton1">Option 1</label><br>
+    <input type="radio" id="radioButton2" name="radioGroup" value="option2"> <label for="radioButton2">Option 2</label><br>
+    <input type="radio" id="radioButton3" name="radioGroup" value="option3"> <label for="radioButton3">Option 3</label><br><br>
+
+    <button id="checkRadioButton">Check Option 2</button>
+    <script>const radioButton1=document.getElementById("radioButton1"),radioButton2=document.getElementById("radioButton2"),radioButton3=document.getElementById("radioButton3"),checkRadioButtonButton=document.getElementById("checkRadioButton");checkRadioButtonButton.addEventListener("click",()=>{radioButton2.click()}),radioButton1.addEventListener("change",()=>{radioButton1.checked&&alert("Option 1 is selected")}),radioButton2.addEventListener("change",()=>{radioButton2.checked&&alert("Option 2 is selected")}),radioButton3.addEventListener("change",()=>{radioButton3.checked&&alert("Option 3 is selected")});</script>
+</body>
+</html>
