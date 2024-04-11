@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Elements by Class</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <style>
+    .to-remove {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Remove all elements of a certain class</h1>
+  <p class="to-remove">This paragraph will be removed.</p>
+  <p class="to-remove">This paragraph will also be removed.</p>
+  <p>This paragraph will stay.</p>
+
+  <button onclick="removeElementsByClass()">Remove Elements</button>
+
+  <script>
+    function removeElementsByClass() {
+      // Get all elements with the class 'to-remove'
+      const elementsToRemove = document.querySelectorAll('.to-remove');
+
+      // Loop through the selected elements and remove each one
+      elementsToRemove.forEach(element => {
+        element.remove();
+      });
+    }
+  </script>
+</body>
+</html>
