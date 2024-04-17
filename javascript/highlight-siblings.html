@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Siblings Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <style>
+    div {
+      padding: 10px;
+      border: 1px solid black;
+      margin: 5px;
+      cursor: pointer;
+      color: black;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+    <h1>Hover your mouse.</h1>
+  <section>
+    <div class="el">Element 1</div>
+    <div class="el">Element 2</div>
+    <div class="el">Element 3</div>
+</section>
+  <section>
+    <div class="el">Element 4</div>
+    <div class="el">Element 5</div>
+    <div class="el">Element 6</div>
+  </section>
+
+  <script>
+    const allElements = document.querySelectorAll('.el');
+
+    allElements.forEach(element => {
+        element.addEventListener('mouseleave',() => removeHighlight(element))
+        element.addEventListener('mouseover',() => highlightSibling(element))
+    });
+
+    function getSiblings(element) {
+        const parentElement = element.parentNode;
+        const childElements = Array.from(parentElement.children);
+        return childElements.filter(child => child !== element);      
+    }
+
+    function highlightSibling(element) {
+        const siblings = getSiblings(element);
+        [element, ...siblings].forEach(sibling => sibling.classList.add('highlight'));
+    }
+
+    function removeHighlight(element) {
+        const siblings = getSiblings(element);
+        [element, ...siblings].forEach(sibling => sibling.classList.remove('highlight'));
+    }
+  </script>
+</body>
+</html>
